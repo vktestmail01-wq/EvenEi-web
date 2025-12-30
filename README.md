@@ -49,6 +49,7 @@ This website is built with Next.js 16 and showcases Project Specular, a revoluti
 - **Styling**: Tailwind CSS v4
 - **TypeScript**: Type-safe development
 - **Fonts**: Geist Sans and Geist Mono from Google Fonts
+- **Animations**: Custom CSS animations with React hooks
 
 ## Getting Started
 
