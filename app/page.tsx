@@ -1,49 +1,574 @@
+'use client';
+
+import { useEffect, useState } from 'react';
+
 export default function Home() {
+  const [heroStep, setHeroStep] = useState(0);
+
+  useEffect(() => {
+    const timer1 = setTimeout(() => setHeroStep(1), 1000);
+    const timer2 = setTimeout(() => setHeroStep(2), 3500);
+    const timer3 = setTimeout(() => setHeroStep(3), 6000);
+
+    return () => {
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+      clearTimeout(timer3);
+    };
+  }, []);
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-center gap-8 py-32 px-16 bg-white dark:bg-black">
-        <svg
-          viewBox="0 0 69 26"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="fill-black dark:fill-white"
-        >
-          <path d="M13.7917 24.3604C12.4622 25.3549 10.7895 25.8884 8.82032 25.8884C6.66971 25.8884 4.87412 25.3543 3.47587 24.3604H13.7917Z"></path>
-          <path d="M27.8204 24.3604C26.802 25.2894 25.534 25.8884 24.1756 25.8884C22.4188 25.8884 21.02 25.339 20.108 24.3604H27.8204Z"></path>
-          <path d="M44.5726 24.3604C43.0194 25.3511 41.0762 25.8884 38.8367 25.8884C36.5972 25.8884 34.6541 25.3511 33.1008 24.3604H44.5726Z"></path>
-          <path d="M6.10452 21.7838C6.64469 22.5408 7.32257 23.0964 8.12748 23.4234H2.40008C1.94592 22.9414 1.55318 22.3936 1.22435 21.7838H6.10452Z"></path>
-          <path d="M15.9753 21.7838C15.6457 22.3936 15.2602 22.9415 14.8213 23.4234H11.8608C12.7015 23.0973 13.4264 22.543 14.0227 21.7838H15.9753Z"></path>
-          <path d="M23.2016 21.7838C23.3205 22.5267 23.6272 23.0906 24.0875 23.4234H19.4507C19.2008 22.9377 19.0348 22.3887 18.9611 21.7838H23.2016Z"></path>
-          <path d="M29.6415 21.7838C29.3929 22.3649 29.0672 22.9198 28.6798 23.4234H26.2913C26.809 23.0921 27.2884 22.5303 27.6965 21.7838H29.6415Z"></path>
-          <path d="M34.7756 21.7838C35.1876 22.498 35.7076 23.0447 36.3327 23.4234H31.8901C31.3725 22.9406 30.9182 22.3925 30.5327 21.7838H34.7756Z"></path>
-          <path d="M47.1403 21.7838C46.7548 22.3925 46.3005 22.9406 45.7829 23.4234H41.3477C41.9765 23.0447 42.5011 22.4979 42.9178 21.7838H47.1403Z"></path>
-          <path d="M4.97293 19.2072C5.1237 19.8073 5.31836 20.3552 5.55486 20.8468H0.788749C0.585257 20.3346 0.420002 19.7875 0.293988 19.2072H4.97293Z"></path>
-          <path d="M16.9458 19.2072C16.8042 19.7876 16.6278 20.3347 16.4179 20.8468H14.6376C14.9063 20.3562 15.1356 19.8083 15.3244 19.2072H16.9458Z"></path>
-          <path d="M23.146 20.8468H18.9172V19.2072H23.146V20.8468Z"></path>
-          <path d="M33.879 19.2072C33.9937 19.8097 34.1454 20.3562 34.3337 20.8468H30.0171C30.0067 20.8251 29.9961 20.8035 29.9859 20.7817C29.9802 20.8034 29.9741 20.8251 29.9682 20.8468H28.1326C28.3289 20.3505 28.4984 19.8012 28.6354 19.2072H33.879Z"></path>
-          <path d="M48.2582 19.2072C48.1017 19.7867 47.8998 20.3339 47.6561 20.8468H43.3651C43.5558 20.3562 43.71 19.8097 43.8264 19.2072H48.2582Z"></path>
-          <path d="M4.61127 16.6306C4.63883 17.207 4.69545 17.7543 4.78 18.2703H0.128844C0.056725 17.7466 0.0134713 17.1997 0 16.6306H4.61127Z"></path>
-          <path d="M17.2781 17.2464C17.2423 17.5969 17.1958 17.9383 17.1392 18.2703H15.5758C15.6704 17.8506 15.7479 17.4096 15.8073 16.9484L17.2781 17.2464Z"></path>
-          <path d="M23.146 18.2703H18.9172V16.6306H23.146V18.2703Z"></path>
-          <path d="M33.6225 16.6306C33.6374 17.2111 33.6755 17.7576 33.7361 18.2703H28.8183C28.902 17.7493 28.9618 17.2012 28.9946 16.6306H33.6225Z"></path>
-          <path d="M48.643 16.6306C48.6191 17.199 48.5595 17.7459 48.4664 18.2703H43.9719C44.0335 17.7576 44.072 17.211 44.0873 16.6306H48.643Z"></path>
-          <path d="M23.146 6.89115H28.9193V8.56739H23.146V15.6937H18.9172V8.56739H15.8592L16.4324 14.49L14.9983 14.6762C14.0055 9.75933 13.1963 8.00865 9.8132 7.85966C6.45181 7.85968 4.61542 10.5441 4.592 15.6937H0.00268892C0.175472 9.48821 3.32011 6.14613 8.93079 6.14613C9.77653 6.14614 10.7326 6.25781 11.8725 6.51853C13.152 6.78855 14.2702 6.89115 15.697 6.89115C19.7286 6.89112 21.3074 4.20914 22.0796 0H23.146V6.89115Z"></path>
-          <path d="M38.8367 6.14613C44.6383 6.14616 48.4971 9.86614 48.6497 15.6937H44.092C44.0101 10.6034 42.1785 7.97132 38.8367 7.97128C35.5308 7.97128 33.6998 10.6034 33.618 15.6937H29.0235C29.1761 9.86611 33.0351 6.14613 38.8367 6.14613Z"></path>
-          <path
-            fillRule="evenodd"
-            clipRule="evenodd"
-            d="M58.5142 19.14C59.5559 19.14 60.9024 19.5091 60.9532 22.5701H58.3236C57.7138 22.5701 57.3201 22.734 57.3709 23.3763C57.5233 25.2074 57.9934 25.385 58.6413 25.385C59.3145 25.385 59.937 25.18 60.2545 23.9229C60.28 23.8546 60.4706 23.8545 60.5468 23.8545C60.6103 23.8545 60.8389 23.8546 60.8135 23.9229C60.4197 25.6993 59.6702 26 58.6413 26C57.5996 26 55.9862 25.631 55.9862 22.5701C55.9862 19.4954 57.536 19.14 58.5142 19.14ZM58.5142 19.5773C57.9044 19.5773 57.4217 19.9736 57.3455 22.0917H59.5813C59.5051 19.9737 59.1367 19.5773 58.5142 19.5773Z"
-          ></path>
-          <path d="M63.258 19.2631C63.3215 19.2631 63.3342 19.4543 63.3342 19.509C63.3342 19.55 63.3216 19.7276 63.258 19.7276C62.6737 19.7276 62.7118 20.083 62.8262 20.5066C62.9913 21.1899 63.5121 22.9663 63.6137 23.4309C63.6391 23.5676 63.7662 23.5539 63.817 23.4309L65.0238 20.1786C65.0365 20.124 65.1763 20.124 65.2525 20.124C65.3287 20.124 65.4685 20.124 65.4939 20.1786L66.6625 23.4309C66.7006 23.5539 66.8404 23.5539 66.8658 23.4309L67.6661 20.5203C67.7931 20.083 67.8186 19.7276 67.2342 19.7276C67.1834 19.7276 67.1707 19.5773 67.1707 19.509C67.1707 19.427 67.1834 19.2631 67.2342 19.2631H68.9238C68.9746 19.2631 69 19.427 69 19.509C69 19.5773 68.9746 19.7276 68.9238 19.7276C68.3903 19.7276 68.2378 20.1239 68.1235 20.5339C67.9965 20.9438 66.5613 25.8484 66.5482 25.9043C66.5228 25.959 66.4339 25.959 66.3704 25.959C66.3069 25.959 66.2179 25.9317 66.2052 25.9043C66.1036 25.426 65.0619 22.6247 64.9222 22.1054C64.9095 21.9824 64.7443 21.9824 64.7062 22.1191C64.6554 22.2286 63.3347 25.8485 63.3216 25.9043C63.3089 25.959 63.2326 25.959 63.1564 25.959C63.0802 25.959 63.004 25.959 62.9786 25.9043L61.4033 20.5339C61.2763 20.0693 61.1111 19.7276 60.5649 19.7276C60.5268 19.7276 60.5014 19.591 60.5014 19.509C60.5014 19.4133 60.5268 19.2631 60.5649 19.2631H63.258Z"></path>
-          <path d="M53.2441 19.1264C54.0064 19.1264 55.2766 19.3724 55.2766 21.2718V24.5105C55.2766 24.9204 55.3275 25.3167 55.8991 25.3167C55.9499 25.3167 55.9627 25.4807 55.9627 25.549C55.9627 25.631 55.9499 25.795 55.8991 25.795H53.2823C53.2441 25.795 53.2187 25.6584 53.2187 25.5627C53.2187 25.4671 53.2314 25.3167 53.2823 25.3167C53.8666 25.3167 53.892 24.9204 53.892 24.5105V21.5178C53.892 19.9053 53.4347 19.8507 53.0536 19.8507C52.4184 19.8507 52.2024 20.3699 52.0119 20.7525V24.5105C52.0119 24.9341 52.0627 25.3167 52.6598 25.3167C52.7106 25.3167 52.7233 25.508 52.7233 25.549C52.7233 25.6037 52.6979 25.795 52.6598 25.795H49.8777C49.8269 25.795 49.8015 25.6583 49.8015 25.549C49.8015 25.4671 49.8269 25.3168 49.8777 25.3167C50.6526 25.3167 50.7034 24.9068 50.7034 24.5105V20.5476C50.7034 20.0693 50.5764 19.7413 49.8777 19.7413C49.8269 19.7413 49.8015 19.6047 49.8015 19.4954C49.8015 19.3861 49.8269 19.2631 49.8777 19.2631H51.6308C51.8213 19.2631 51.9611 19.3314 51.9992 19.673C52.0119 19.7687 52.0754 19.796 52.1389 19.7276C52.3422 19.4817 52.6598 19.1264 53.2441 19.1264Z"></path>
-          <path d="M48.0394 25.9621H46.8V24.629H48.0394V25.9621Z"></path>
-        </svg>
-        <div className="flex flex-col items-center text-center">
-          <h1 className="max-w-xs text-2xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            Ready for your first task
-          </h1>
+    <div className="bg-black text-zinc-200 min-h-screen">
+      {/* Grain overlay */}
+      <div className="fixed inset-0 pointer-events-none z-50 opacity-[0.015]" 
+           style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 400 400\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'4\' numOctaves=\'4\' /%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\' /%3E%3C/svg%3E")' }} />
+
+      {/* Hero Section */}
+      <section className="min-h-screen flex flex-col items-center justify-center px-8 relative">
+        <div className="max-w-4xl w-full text-center space-y-8">
+          {/* First text */}
+          <div className={`transition-opacity duration-1000 ${heroStep >= 1 ? 'opacity-100' : 'opacity-0'}`}>
+            <p className="text-2xl md:text-3xl font-light text-zinc-400">
+              You forget more than you remember.
+            </p>
+          </div>
+
+          {/* Second text */}
+          <div className={`transition-opacity duration-1000 ${heroStep >= 2 ? 'opacity-100' : 'opacity-0'}`}>
+            <p className="text-2xl md:text-3xl font-light text-zinc-300">
+              What if you didn&apos;t have to?
+            </p>
+          </div>
+
+          {/* Main content */}
+          <div className={`transition-opacity duration-1000 delay-500 ${heroStep >= 3 ? 'opacity-100' : 'opacity-0'} space-y-6 pt-8`}>
+            <h1 className="text-6xl md:text-7xl font-bold text-white tracking-tight">
+              Project Specular
+            </h1>
+            <p className="text-xl md:text-2xl text-zinc-400">
+              by EvenEi
+            </p>
+            <p className="text-3xl md:text-4xl font-light text-emerald-500 pt-4">
+              Your memory, upgraded.
+            </p>
+            <p className="text-lg text-zinc-500 pt-4">
+              Everyday Intelligence — designed to live with you.
+            </p>
+          </div>
+
+          {/* Scroll CTA */}
+          <div className={`transition-opacity duration-1000 delay-1000 ${heroStep >= 3 ? 'opacity-100' : 'opacity-0'} pt-16`}>
+            <p className="text-sm text-zinc-600 animate-pulse">
+              Scroll to continue
+            </p>
+            <div className="mt-4">
+              <svg className="w-6 h-6 mx-auto text-zinc-600 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
+          </div>
         </div>
-      </main>
+      </section>
+
+      {/* Section 1: The Hook */}
+      <section className="min-h-screen flex items-center justify-center px-8 py-32">
+        <div className="max-w-3xl space-y-12 text-center">
+          <p className="text-3xl md:text-4xl font-light text-zinc-300 leading-relaxed">
+            You&apos;ve lived thousands of moments today.
+          </p>
+          <p className="text-3xl md:text-4xl font-light text-zinc-400 leading-relaxed">
+            Most of them are already gone.
+          </p>
+          <div className="space-y-6 pt-8">
+            <p className="text-2xl md:text-3xl font-light text-zinc-400">
+              You didn&apos;t lose them.
+            </p>
+            <p className="text-2xl md:text-3xl font-light text-zinc-400">
+              No one stole them.
+            </p>
+            <p className="text-2xl md:text-3xl font-light text-zinc-400">
+              They were never saved.
+            </p>
+          </div>
+          <p className="text-3xl md:text-4xl font-medium text-emerald-500 pt-12">
+            Project Specular exists to change that.
+          </p>
+        </div>
+      </section>
+
+      {/* Section 2: What This Is */}
+      <section className="min-h-screen flex items-center justify-center px-8 py-32">
+        <div className="max-w-3xl space-y-16 text-center">
+          <h2 className="text-4xl md:text-5xl font-semibold text-white">
+            This is not another smart device.
+          </h2>
+          <div className="space-y-8">
+            <p className="text-2xl md:text-3xl font-light text-zinc-400">
+              It doesn&apos;t wait for commands.
+            </p>
+            <p className="text-2xl md:text-3xl font-light text-zinc-400">
+              It doesn&apos;t need constant attention.
+            </p>
+            <p className="text-2xl md:text-3xl font-light text-zinc-400">
+              It doesn&apos;t live inside a screen.
+            </p>
+          </div>
+          <div className="space-y-8 pt-12">
+            <p className="text-2xl md:text-3xl font-light text-zinc-300">
+              It watches quietly.
+            </p>
+            <p className="text-2xl md:text-3xl font-light text-zinc-300">
+              It understands context.
+            </p>
+            <p className="text-2xl md:text-3xl font-light text-zinc-300">
+              It remembers for you.
+            </p>
+          </div>
+          <p className="text-4xl md:text-5xl font-semibold text-emerald-500 pt-16">
+            This is Project Specular.
+          </p>
+        </div>
+      </section>
+
+      {/* Section 3: Everyday Intelligence */}
+      <section className="min-h-screen flex items-center justify-center px-8 py-32">
+        <div className="max-w-3xl space-y-12 text-center">
+          <h2 className="text-4xl md:text-5xl font-semibold text-white">
+            What is Everyday Intelligence?
+          </h2>
+          <p className="text-2xl md:text-3xl font-light text-zinc-400 leading-relaxed">
+            Artificial intelligence today lives in prompts, dashboards, and apps.
+          </p>
+          <p className="text-3xl md:text-4xl font-light text-emerald-500 leading-relaxed">
+            Everyday Intelligence lives in moments.
+          </p>
+          <div className="space-y-6 pt-8">
+            <p className="text-xl md:text-2xl font-light text-zinc-400">
+              It understands life as it happens —
+            </p>
+            <p className="text-xl md:text-2xl font-light text-zinc-400">
+              when your hands are busy,
+            </p>
+            <p className="text-xl md:text-2xl font-light text-zinc-400">
+              when your mind is distracted,
+            </p>
+            <p className="text-xl md:text-2xl font-light text-zinc-400">
+              when you forget small things that matter.
+            </p>
+          </div>
+          <div className="space-y-6 pt-12">
+            <p className="text-2xl md:text-3xl font-light text-zinc-300">
+              Everyday Intelligence doesn&apos;t interrupt life.
+            </p>
+            <p className="text-2xl md:text-3xl font-light text-zinc-300">
+              It supports it.
+            </p>
+          </div>
+          <p className="text-sm text-emerald-500 pt-8">
+            Built by EvenEi.
+          </p>
+        </div>
+      </section>
+
+      {/* Section 4: The Problem */}
+      <section className="min-h-screen flex items-center justify-center px-8 py-32">
+        <div className="max-w-3xl space-y-12 text-center">
+          <h2 className="text-4xl md:text-5xl font-semibold text-white">
+            Why current technology feels wrong
+          </h2>
+          <div className="space-y-8">
+            <p className="text-xl md:text-2xl font-light text-zinc-400">
+              It forgets everything the moment ends.
+            </p>
+            <p className="text-xl md:text-2xl font-light text-zinc-400">
+              It needs you to ask.
+            </p>
+            <p className="text-xl md:text-2xl font-light text-zinc-400">
+              It depends on another device to think.
+            </p>
+            <p className="text-xl md:text-2xl font-light text-zinc-400">
+              It speaks too much or not at all.
+            </p>
+          </div>
+          <div className="space-y-8 pt-12">
+            <p className="text-2xl md:text-3xl font-light text-zinc-300">
+              Most technology wants attention.
+            </p>
+            <p className="text-2xl md:text-3xl font-light text-zinc-300">
+              Life doesn&apos;t.
+            </p>
+          </div>
+          <p className="text-3xl md:text-4xl font-medium text-emerald-500 pt-12">
+            Project Specular was built for life.
+          </p>
+        </div>
+      </section>
+
+      {/* Section 5: The Shift */}
+      <section className="min-h-screen flex items-center justify-center px-8 py-32">
+        <div className="max-w-3xl space-y-12 text-center">
+          <h2 className="text-4xl md:text-5xl font-semibold text-white leading-tight">
+            Tools react.<br />Companions remember.
+          </h2>
+          <p className="text-2xl md:text-3xl font-light text-zinc-400">
+            Most AI reacts after you speak.
+          </p>
+          <p className="text-3xl md:text-4xl font-light text-emerald-500">
+            Project Specular notices before you do.
+          </p>
+          <div className="space-y-8 pt-12">
+            <p className="text-2xl md:text-3xl font-light text-zinc-300">
+              It doesn&apos;t answer questions.
+            </p>
+            <p className="text-2xl md:text-3xl font-light text-zinc-300">
+              It recalls experiences.
+            </p>
+          </div>
+          <p className="text-xl md:text-2xl font-light text-zinc-400 pt-12">
+            This is the shift from assistance to awareness.
+          </p>
+        </div>
+      </section>
+
+      {/* Section 6: Memory */}
+      <section className="min-h-screen flex items-center justify-center px-8 py-32">
+        <div className="max-w-3xl space-y-12">
+          <h2 className="text-4xl md:text-5xl font-semibold text-white text-center">
+            Memory is the core feature.
+          </h2>
+          <p className="text-2xl md:text-3xl font-light text-zinc-400 text-center">
+            Project Specular builds a private, contextual memory of your life.
+          </p>
+          <div className="space-y-6 text-center pt-8">
+            <p className="text-2xl md:text-3xl font-light text-zinc-400">
+              Not recordings.
+            </p>
+            <p className="text-2xl md:text-3xl font-light text-zinc-400">
+              Not logs.
+            </p>
+            <p className="text-3xl md:text-4xl font-medium text-emerald-500">
+              Memories.
+            </p>
+          </div>
+          <div className="space-y-6 pt-12 text-left">
+            <p className="text-xl md:text-2xl font-light text-zinc-300">
+              It remembers:
+            </p>
+            <ul className="space-y-4 text-lg md:text-xl text-zinc-400 pl-8">
+              <li>• Where you placed things</li>
+              <li>• What you were doing earlier</li>
+              <li>• Who you interacted with</li>
+              <li>• What caught your attention</li>
+            </ul>
+          </div>
+          <div className="space-y-4 pt-12 text-center">
+            <p className="text-2xl md:text-3xl font-medium text-emerald-500">
+              Specular doesn&apos;t search.
+            </p>
+            <p className="text-2xl md:text-3xl font-medium text-emerald-500">
+              It remembers.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 7: Asking Questions */}
+      <section className="min-h-screen flex items-center justify-center px-8 py-32">
+        <div className="max-w-3xl space-y-12 text-center">
+          <h2 className="text-4xl md:text-5xl font-semibold text-white leading-tight">
+            You don&apos;t ask it questions.<br />You talk to your memory.
+          </h2>
+          <div className="space-y-8 pt-12">
+            <p className="text-xl md:text-2xl font-light text-emerald-400">
+              &ldquo;Where did I keep my charger?&rdquo;
+            </p>
+            <p className="text-xl md:text-2xl font-light text-emerald-400">
+              &ldquo;What was I doing before lunch?&rdquo;
+            </p>
+            <p className="text-xl md:text-2xl font-light text-emerald-400">
+              &ldquo;Have I met this person before?&rdquo;
+            </p>
+            <p className="text-xl md:text-2xl font-light text-emerald-400">
+              &ldquo;What did I read last night?&rdquo;
+            </p>
+          </div>
+          <div className="space-y-6 pt-12">
+            <p className="text-2xl md:text-3xl font-light text-zinc-300">
+              The answers already exist.
+            </p>
+            <p className="text-2xl md:text-3xl font-light text-zinc-300">
+              Specular simply brings them back.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 8: Live Companion Mode */}
+      <section className="min-h-screen flex items-center justify-center px-8 py-32">
+        <div className="max-w-3xl space-y-12 text-center">
+          <h2 className="text-4xl md:text-5xl font-semibold text-white">
+            It speaks — on its own terms.
+          </h2>
+          <p className="text-2xl md:text-3xl font-light text-zinc-400">
+            Project Specular can speak independently.
+          </p>
+          <div className="space-y-6 pt-8">
+            <p className="text-xl md:text-2xl font-light text-zinc-400">
+              Not constantly.
+            </p>
+            <p className="text-xl md:text-2xl font-light text-zinc-400">
+              Not randomly.
+            </p>
+            <p className="text-xl md:text-2xl font-light text-zinc-300">
+              Only when context demands it.
+            </p>
+          </div>
+          <div className="space-y-8 pt-12">
+            <p className="text-lg md:text-xl text-emerald-400">
+              &ldquo;You usually take your keys now.&rdquo;
+            </p>
+            <p className="text-lg md:text-xl text-emerald-400">
+              &ldquo;You&apos;ve already checked this place.&rdquo;
+            </p>
+            <p className="text-lg md:text-xl text-emerald-400">
+              &ldquo;This person looks familiar.&rdquo;
+            </p>
+          </div>
+          <div className="space-y-6 pt-12">
+            <p className="text-2xl md:text-3xl font-light text-zinc-300">
+              This is not conversation.
+            </p>
+            <p className="text-2xl md:text-3xl font-light text-zinc-300">
+              This is awareness.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 9: Control & Trust */}
+      <section className="min-h-screen flex items-center justify-center px-8 py-32">
+        <div className="max-w-3xl space-y-12">
+          <h2 className="text-4xl md:text-5xl font-semibold text-white text-center">
+            You are always in control.
+          </h2>
+          <p className="text-2xl md:text-3xl font-light text-zinc-400 text-center">
+            Specular never owns your memory.<br />You do.
+          </p>
+          <div className="space-y-6 pt-12">
+            <p className="text-xl md:text-2xl font-light text-zinc-300">
+              Through the app, you control:
+            </p>
+            <ul className="space-y-4 text-lg md:text-xl text-zinc-400 pl-8">
+              <li>• What is remembered</li>
+              <li>• How long it&apos;s stored</li>
+              <li>• When it speaks</li>
+              <li>• What stays private</li>
+            </ul>
+          </div>
+          <p className="text-xl md:text-2xl font-light text-zinc-300 text-center pt-12">
+            If you delete a memory, it&apos;s gone.
+          </p>
+          <div className="space-y-6 pt-12 text-center">
+            <p className="text-2xl md:text-3xl font-medium text-emerald-500">
+              Privacy is not a feature.
+            </p>
+            <p className="text-2xl md:text-3xl font-medium text-emerald-500">
+              It&apos;s a rule.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 10: How It Works */}
+      <section className="min-h-screen flex items-center justify-center px-8 py-32">
+        <div className="max-w-3xl space-y-12 text-center">
+          <h2 className="text-4xl md:text-5xl font-semibold text-white">
+            How it works — quietly
+          </h2>
+          <div className="space-y-8 pt-8 text-left">
+            <p className="text-lg md:text-xl font-light text-zinc-400">
+              The glasses observe context using low-power sensing.
+            </p>
+            <p className="text-lg md:text-xl font-light text-zinc-400">
+              On-device intelligence filters what matters.
+            </p>
+            <p className="text-lg md:text-xl font-light text-zinc-400">
+              Meaningful moments become memory nodes.
+            </p>
+            <p className="text-lg md:text-xl font-light text-zinc-400">
+              The app syncs for deeper recall and control.
+            </p>
+            <p className="text-lg md:text-xl font-light text-zinc-400">
+              Over time, Specular adapts to you.
+            </p>
+          </div>
+          <div className="space-y-6 pt-12 text-center">
+            <p className="text-xl md:text-2xl font-light text-zinc-300">
+              No constant uploads.
+            </p>
+            <p className="text-xl md:text-2xl font-light text-zinc-300">
+              No surveillance behavior.
+            </p>
+            <p className="text-xl md:text-2xl font-light text-zinc-300">
+              No noise.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 11: The Products */}
+      <section className="min-h-screen flex items-center justify-center px-8 py-32">
+        <div className="max-w-5xl w-full space-y-16">
+          <div className="text-center space-y-4">
+            <h2 className="text-4xl md:text-5xl font-semibold text-white">
+              Choose your Specular
+            </h2>
+            <p className="text-sm text-zinc-500">
+              Prices are estimated.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Basic */}
+            <div className="border border-zinc-800 bg-zinc-900/30 p-8 rounded-lg hover:border-emerald-500/50 transition-colors">
+              <div className="space-y-6">
+                <div>
+                  <h3 className="text-2xl font-semibold text-white">Specular Basic</h3>
+                  <p className="text-3xl font-bold text-emerald-500 mt-4">₹8,999</p>
+                </div>
+                <p className="text-zinc-400">
+                  For everyday memory and awareness.
+                </p>
+                <div className="space-y-3 pt-4">
+                  <p className="text-sm font-semibold text-zinc-300">Features:</p>
+                  <ul className="space-y-2 text-sm text-zinc-400">
+                    <li>• Contextual memory capture</li>
+                    <li>• Object and location recall</li>
+                    <li>• Phone-assisted intelligence</li>
+                    <li>• Manual voice interaction</li>
+                    <li>• Essential app control</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            {/* Pro */}
+            <div className="border border-emerald-500 bg-zinc-900/50 p-8 rounded-lg shadow-lg shadow-emerald-500/20 relative">
+              <div className="absolute top-0 right-0 bg-emerald-500 text-black text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg">
+                RECOMMENDED
+              </div>
+              <div className="space-y-6">
+                <div>
+                  <h3 className="text-2xl font-semibold text-white">Specular Pro</h3>
+                  <p className="text-3xl font-bold text-emerald-500 mt-4">₹14,999</p>
+                </div>
+                <p className="text-zinc-300">
+                  For deeper intelligence and independence.
+                </p>
+                <div className="space-y-3 pt-4">
+                  <p className="text-sm font-semibold text-zinc-300">Everything in Basic, plus:</p>
+                  <ul className="space-y-2 text-sm text-zinc-400">
+                    <li>• Independent speaking ability</li>
+                    <li>• On-device intelligence layer</li>
+                    <li>• Faster recall</li>
+                    <li>• Advanced memory search</li>
+                    <li>• Behavior profiles</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            {/* Max */}
+            <div className="border border-zinc-800 bg-zinc-900/30 p-8 rounded-lg hover:border-emerald-500/50 transition-colors">
+              <div className="space-y-6">
+                <div>
+                  <h3 className="text-2xl font-semibold text-white">Specular Max</h3>
+                  <p className="text-3xl font-bold text-emerald-500 mt-4">₹19,999</p>
+                </div>
+                <p className="text-zinc-400">
+                  The full Specular experience.
+                </p>
+                <div className="space-y-3 pt-4">
+                  <p className="text-sm font-semibold text-zinc-300">Everything in Pro, plus:</p>
+                  <ul className="space-y-2 text-sm text-zinc-400">
+                    <li>• Maximum on-device processing</li>
+                    <li>• Deeper memory retention</li>
+                    <li>• Premium audio and capture</li>
+                    <li>• Advanced contextual awareness</li>
+                    <li>• Priority updates and features</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 12: Why This Exists */}
+      <section className="min-h-screen flex items-center justify-center px-8 py-32">
+        <div className="max-w-3xl space-y-12 text-center">
+          <h2 className="text-4xl md:text-5xl font-semibold text-white">
+            Why Project Specular exists
+          </h2>
+          <div className="space-y-8 pt-8">
+            <p className="text-2xl md:text-3xl font-light text-zinc-400">
+              Life is fragmented.
+            </p>
+            <p className="text-2xl md:text-3xl font-light text-zinc-400">
+              Attention is overloaded.
+            </p>
+            <p className="text-2xl md:text-3xl font-light text-zinc-400">
+              Memory is stretched thin.
+            </p>
+          </div>
+          <p className="text-3xl md:text-4xl font-medium text-emerald-500 pt-12">
+            Project Specular exists to restore continuity.
+          </p>
+          <div className="space-y-8 pt-12">
+            <p className="text-xl md:text-2xl font-light text-zinc-300">
+              Not to replace thinking.
+            </p>
+            <p className="text-xl md:text-2xl font-light text-zinc-300">
+              Not to automate living.
+            </p>
+            <p className="text-2xl md:text-3xl font-light text-zinc-200">
+              But to support being human.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Final Section */}
+      <section className="min-h-screen flex items-center justify-center px-8 py-32">
+        <div className="max-w-3xl space-y-16 text-center">
+          <div className="space-y-12">
+            <p className="text-3xl md:text-4xl font-light text-zinc-300">
+              This is not smart eyewear.
+            </p>
+            <p className="text-4xl md:text-5xl font-semibold text-emerald-500">
+              This is Everyday Intelligence.
+            </p>
+          </div>
+          <p className="text-xl text-zinc-400 pt-8">
+            Project Specular by EvenEi
+          </p>
+          <button className="mt-12 px-12 py-4 bg-emerald-500 hover:bg-emerald-600 text-black font-semibold text-lg rounded-lg transition-colors shadow-lg shadow-emerald-500/30">
+            Join the waitlist
+          </button>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="border-t border-zinc-900 py-12 px-8">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-zinc-600">
+          <p>© 2024 EvenEi. All rights reserved.</p>
+          <div className="flex gap-8">
+            <a href="#" className="hover:text-emerald-500 transition-colors">Privacy</a>
+            <a href="#" className="hover:text-emerald-500 transition-colors">Terms</a>
+            <a href="#" className="hover:text-emerald-500 transition-colors">Contact</a>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
